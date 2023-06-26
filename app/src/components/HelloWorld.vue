@@ -1,7 +1,19 @@
-<script></script>
+<script>
+export default {
+    data() {
+        return {
+            tests: this.$store.state.test.tests,
+        };
+    },
+};
+</script>
 
 <template>
-    <div class="container">Hello world!</div>
+    <div class="container">
+        <div class="tests" v-for="test in tests" :key="test.id">
+            {{ test.desc }}
+        </div>
+    </div>
 </template>
 
 <style scoped lang="sass">

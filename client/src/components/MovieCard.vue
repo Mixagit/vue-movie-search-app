@@ -6,8 +6,6 @@ export default {
     },
 };
 </script>
-<template>
-    <router-view></router-view>
-</template>
+<template></template>
 
 <style scoped lang="sass"></style>

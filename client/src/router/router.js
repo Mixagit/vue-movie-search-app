@@ -1,12 +1,12 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
-import HelloWorld from ".././components/HelloWorld.vue";
+import Main from ".././pages/Main.vue";
 
 const routes = [
     {
         path: "/",
-        component: HelloWorld,
-        meta: { title: "Поиск кино" },
+        component: Main,
+        meta: { title: "Movie search" },
     },
 ];
 
@@ -16,7 +16,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    document.title = to.meta.title || "Поиск кино";
+    document.title = to.meta.title || "Movie search";
     next();
 });
 

@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
-import { testModule } from "./testModule";
+import { movieModule } from "./movieModule";
 
 export default createStore({
     modules: {
-        test: testModule,
+        movie: movieModule,
     },
 });

@@ -59,12 +59,21 @@ export default {
             @input="setSearchQuery($event.target.value)"
             placeholder="Поиск...."
         />
+
         <select
             :value="selectedSort"
-            @change="setSelectedSort"
-            :options="sortOptions"
-        />
-        <MovieList :movies="sortedAndSearchedMovies" v-if="!isPostsLoading" />
+            @change="setSelectedSort($event.target.value)"
+        >
+            <option disabled value="">Выберите из списка</option>
+            <option
+                v-for="option in sortOptions"
+                :key="option.value"
+                :value="option.value"
+            >
+                {{ option.name }}
+            </option>
+        </select>
+        <MovieList :movies="sortedAndSearchedMovies" />
     </div>
 </template>
 

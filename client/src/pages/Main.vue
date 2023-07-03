@@ -1,7 +1,6 @@
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
-import MovieList from "../components/MovieList.vue";
-import axios from "axios";
+import MovieList from "@/components/MovieList.vue";
 
 export default {
     components: { MovieList },
@@ -20,16 +19,6 @@ export default {
             loadMoreMovies: "movie/loadMoreMovies",
             fetchMovies: "movie/fetchMovies",
         }),
-        createMovie(movie) {
-            this.movies.push(movie);
-            this.dialogVisible = false;
-        },
-        removeMovie(movie) {
-            this.movies = this.movies.filter((p) => p.id !== movies.id);
-        },
-        showDialog() {
-            this.dialogVisible = true;
-        },
     },
     mounted() {
         this.fetchMovies();
@@ -76,6 +65,20 @@ export default {
             </option>
         </select>
         <MovieList :movies="sortedAndSearchedMovies" />
+        <div>oru</div>
+        <div class="page__wrapper">
+            <div
+                v-for="pageNumber in totalPages"
+                :key="pageNumber"
+                class="page"
+                :class="{
+                    'current-page': page === pageNumber,
+                }"
+                @click="changePage(pageNumber)"
+            >
+                {{ pageNumber }}
+            </div>
+        </div>
     </div>
 </template>
 
@@ -87,4 +90,12 @@ export default {
     padding: 15px
     border: 1px solid black
     margin-top: 15px
+.page__wrapper
+  display: flex
+  margin-top: 15px
+.page
+  border: 1px solid black
+  padding: 10px
+.current-page
+  border: 2px solid teal
 </style>

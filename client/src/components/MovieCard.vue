@@ -1,5 +1,6 @@
 <template>
     <div class="movie" @click="$router.push(`/movies/${movie.id}`)">
+        <!-- <img :src="movie.poster.url" :alt="movie.name" /> -->
         <div class="name">{{ movie.name }}</div>
         <div class="desc">{{ movie.description }}</div>
     </div>

@@ -8,7 +8,7 @@ export const movieModule = {
         searchQuery: "",
         page: 1,
         limit: 10,
-        totalPages: 0,
+        totalPages: 3,
         sortOptions: [
             { value: "name", name: "По названию" },
             { value: "desc", name: "По описанию" },
@@ -54,9 +54,7 @@ export const movieModule = {
         async fetchMovies({ state, commit }) {
             try {
                 commit("setLoading", true);
-                const response = await axios.get(
-                    "http://localhost:5000/api/movies"
-                );
+                const response = await axios.get("/api/movies?_limit=10");
                 commit("setMovies", response.data);
             } catch (e) {
                 console.log(e);

@@ -1,11 +1,13 @@
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 import MovieList from "../components/MovieList.vue";
+import axios from "axios";
+
 export default {
     components: { MovieList },
     data() {
         return {
-            tests: "",
+            moviesTest: "",
         };
     },
     methods: {
@@ -29,9 +31,9 @@ export default {
             this.dialogVisible = true;
         },
     },
-    // mounted() {
-    //     this.fetchMovies();
-    // },
+    mounted() {
+        this.fetchMovies();
+    },
     computed: {
         ...mapState({
             movies: (state) => state.movie.movies,

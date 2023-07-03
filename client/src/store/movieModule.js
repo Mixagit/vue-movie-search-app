@@ -1,13 +1,8 @@
+import axios from "axios";
+
 export const movieModule = {
     state: () => ({
-        movies: [
-            { id: 1, name: "movie 2", desc: "desc 5" },
-            { id: 2, name: "movie 1", desc: "desc 4" },
-            { id: 3, name: "movie 5", desc: "desc 1" },
-            { id: 4, name: "movie 3", desc: "desc 3" },
-            { id: 5, name: "movie 6", desc: "desc 2" },
-            { id: 6, name: "movie 4", desc: "desc 6" },
-        ],
+        movies: [],
         isMoviesLoading: false,
         selectedSort: "",
         searchQuery: "",
@@ -60,17 +55,7 @@ export const movieModule = {
             try {
                 commit("setLoading", true);
                 const response = await axios.get(
-                    "https://jsonplaceholder.typicode.com/posts",
-                    {
-                        params: {
-                            _page: state.page,
-                            _limit: state.limit,
-                        },
-                    }
-                );
-                commit(
-                    "setTotalPages",
-                    Math.ceil(response.headers["x-total-count"] / state.limit)
+                    "http://localhost:5000/api/movies"
                 );
                 commit("setMovies", response.data);
             } catch (e) {

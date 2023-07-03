@@ -1,12 +1,18 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
 import Main from ".././pages/Main.vue";
+import MovieCard from ".././components/MovieCard.vue";
 
 const routes = [
     {
         path: "/",
         component: Main,
         meta: { title: "Movie search" },
+    },
+    {
+        path: "/movies/:id",
+        component: MovieCard,
+        meta: { title: "Movie by id" },
     },
 ];
 

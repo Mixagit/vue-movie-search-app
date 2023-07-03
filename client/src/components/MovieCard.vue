@@ -1,11 +1,25 @@
+<template>
+    <div class="movie" @click="$router.push(`/movies/${movie.id}`)">
+        <div class="name">{{ movie.name }}</div>
+        <div class="desc">{{ movie.desc }}</div>
+    </div>
+</template>
+
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 export default {
-    components: {
-        HelloWorld,
+    props: {
+        movie: {
+            type: Object,
+            required: true,
+        },
     },
 };
 </script>
-<template></template>
 
-<style scoped lang="sass"></style>
+<style scoped lang="sass">
+.movie
+    padding: 15px
+    border: 1px solid black
+    margin-top: 15px
+    cursor: pointer
+</style>

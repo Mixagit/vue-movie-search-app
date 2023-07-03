@@ -1,6 +1,8 @@
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
+import MovieList from "../components/MovieList.vue";
 export default {
+    components: { MovieList },
     data() {
         return {
             tests: "",
@@ -62,14 +64,7 @@ export default {
             @change="setSelectedSort"
             :options="sortOptions"
         />
-        <div
-            class="movie"
-            v-for="movie in sortedAndSearchedMovies"
-            :key="movie.id"
-        >
-            <div class="name">{{ movie.name }}</div>
-            <div class="desc">{{ movie.desc }}</div>
-        </div>
+        <MovieList :movies="sortedAndSearchedMovies" v-if="!isPostsLoading" />
     </div>
 </template>
 
